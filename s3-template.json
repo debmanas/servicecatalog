@@ -12,7 +12,7 @@
         "Value": {
           "Ref": "S3Bucket"
         },
-        "Description": "Codepipeline -demo Name of Amazon S3 bucket to hold website content"
+        "Description": "Codepipeline-Constrain -demo Name of Amazon S3 bucket to hold website content"
       }
     }
   }
