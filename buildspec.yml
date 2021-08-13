@@ -17,4 +17,4 @@ phases:
     commands:
       - echo Build completed on 'date' 
       - aws servicecatalog create-portfolio-share --portfolio-id port-t3mictubnuptg --account-id 649664284872
-      - aws servicecatalog accept-portfolio-share --portfolio-id port-t3mictubnuptg
+      
