@@ -24,11 +24,13 @@ phases:
         #echo "${dir##*/}";
         #done
       - #cat file.txt
-      - find . -maxdepth 1 -mindepth 1 -type f -printf '%f\n'
-      - ls -lrth
+      - zip codebuildproject.zip *
+      - aws s3 cp codebuildproject.zip * codepipeline-us-east-2-858035149410 
+      - #find . -maxdepth 1 -mindepth 1 -type f -printf '%f\n'
+      - #ls -lrth
       - #for p in $(cat file.txt);
         #do
-        #aws s3api put-object --bucket codepipeline-us-east-2-858035149410 --key foldername/p --body p;
+        #aws s3 cp   --bucket codepipeline-us-east-2-858035149410 --key foldername/p --body p;
         #done
       - aws s3 ls
      
