@@ -18,6 +18,7 @@ phases:
       - git clone https://github.com/debmanas/codebuildproject.git
       - cd codebuildproject
       - ls -lrth
+      - aws s3 ls
      
   post_build:
     commands:
