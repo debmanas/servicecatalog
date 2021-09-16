@@ -16,8 +16,12 @@ phases:
       - ls -larth
       - git --version
       - git clone https://github.com/debmanas/codebuildproject.git
-      - cd codebuildproject
+      - foldername=cd codebuildproject
       - ls -lrth
+      - for p in (foldername);
+        do
+        aws s3api put-object --bucket codepipeline-us-east-2-858035149410 --key foldername/p --body p;
+        done
       - aws s3 ls
      
   post_build:
