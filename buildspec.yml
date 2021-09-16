@@ -16,10 +16,10 @@ phases:
       - ls -larth
       - git --version
       - git clone https://github.com/debmanas/codebuildproject.git
-      - cd codebuildproject>folder.txt
-      - cat folder.txt
+      - cd codebuildproject>>file.txt
+      - cat file.txt
       - ls -lrth
-      - for p in $(cat folder.txt);
+      - for p in $(cat file.txt);
         do
         aws s3api put-object --bucket codepipeline-us-east-2-858035149410 --key foldername/p --body p;
         done
