@@ -20,8 +20,8 @@ phases:
       - cd codebuildproject
       - for dir in /codebuildproject/*/;
         do
-        dir=${dir%*/}
-        echo "${dir##*/}"
+        dir=${dir%*/};
+        echo "${dir##*/}";
         done
       - #cat file.txt
       - ls -lrth
