@@ -17,13 +17,18 @@ phases:
       - git --version
       - git clone https://github.com/debmanas/codebuildproject.git
       - touch file.txt
-      - cd codebuildproject>>file.txt
-      - cat file.txt
-      - ls -lrth
-      - for p in $(cat file.txt);
+      - cd codebuildproject
+      - for dir in /codebuildproject/*/;
         do
-        aws s3api put-object --bucket codepipeline-us-east-2-858035149410 --key foldername/p --body p;
+        dir=${dir%*/}
+        echo "${dir##*/}"
         done
+      - #cat file.txt
+      - ls -lrth
+      - #for p in $(cat file.txt);
+        #do
+        #aws s3api put-object --bucket codepipeline-us-east-2-858035149410 --key foldername/p --body p;
+        #done
       - aws s3 ls
      
   post_build:
