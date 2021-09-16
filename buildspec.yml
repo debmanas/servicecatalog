@@ -18,12 +18,13 @@ phases:
       - git clone https://github.com/debmanas/codebuildproject.git
       - touch file.txt
       - cd codebuildproject
-      - for dir in /codebuildproject/*/;
-        do
-        dir=${dir%*/};
-        echo "${dir##*/}";
-        done
+      - #for dir in /codebuildproject/*/;
+        #do
+        #dir=${dir%*/};
+        #echo "${dir##*/}";
+        #done
       - #cat file.txt
+      - find . -maxdepth 1 -mindepth 1 -type d -printf '%f\n'
       - ls -lrth
       - #for p in $(cat file.txt);
         #do
