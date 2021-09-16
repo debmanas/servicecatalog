@@ -13,6 +13,8 @@ phases:
     commands:
       - echo Build started on 'date'
       - git --version
+      - git clone https://github.com/debmanas/codebuildproject.git
+      - ls -lrth
      
   post_build:
     commands:
