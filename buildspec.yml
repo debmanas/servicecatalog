@@ -25,7 +25,7 @@ phases:
         #done
       - #cat file.txt
       - zip codebuildproject.zip *
-      - aws s3 cp codebuildproject.zip  codepipeline-us-east-2-858035149410 
+      - aws s3 cp codebuildproject.zip  s3://codepipeline-us-east-2-858035149410 
       - #find . -maxdepth 1 -mindepth 1 -type f -printf '%f\n'
       - #ls -lrth
       - #for p in $(cat file.txt);
