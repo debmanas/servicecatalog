@@ -36,6 +36,10 @@ phases:
       - aws s3 ls
       - ACC=$(aws sts get-caller-identity --query 'Account' | tr -d '"')
       - echo $ACC
+      - childAcc=""
+      - childAccComma=${childAcc// /,}
+      - allACC="$ACC $childAcc"
+      - echo $childAcc
      
   post_build:
     commands:
