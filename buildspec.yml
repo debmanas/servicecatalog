@@ -34,6 +34,8 @@ phases:
         #aws s3 cp   --bucket codepipeline-us-east-2-858035149410 --key foldername/p --body p;
         #done
       - aws s3 ls
+      - ACC=$(aws sts get-caller-identity --query 'Account' | tr -d '"')
+      - echo $ACC
      
   post_build:
     commands:
