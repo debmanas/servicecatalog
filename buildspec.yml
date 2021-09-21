@@ -44,5 +44,11 @@ phases:
   post_build:
     commands:
       - echo Build completed on  time 'date' 
+      - aws sts assume-role --role-arn arn:aws:iam::649664284872:role/AWSCloudFormationStackSetExecutionRole --role-session-name deployer --query 'Credentials.[AccessKeyId,SecureAccessKey,SessionToken]' --output text >/tmp/credentials
+      - AWS_ACCESS_KEY_ID=`cat /tmp/credentials |awk '{print $1}'`
+      - AWS_SECRET_ACCESS_KEY= `cat /tmp/credentials |awk '{print $2}'`
+      - AWS_SESSION_TOKEN= `cat /tmp/credentials |awk '{print $3}'`
+      - aws sts get-caller_identity
+      -aws cloudformation create-stack --stack-name myteststack --template-body file://stack.yml
       - aws servicecatalog create-portfolio-share --portfolio-id port-t3mictubnuptg --account-id 649664284872
       

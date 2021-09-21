@@ -1,0 +1,36 @@
+AWSTemplateFormatVersion:"2010-09-09"
+Description: This is a portfolio template
+Parameters:
+  s3creation:
+    Type: String
+Resources:
+  BlueprintPortfolio:
+    Type: AWS::ServiceCatalog::Portfolio
+    Properties:
+      Description: Portfolio Creation
+      DisplayName: Blueprint port
+      ProviderName: MD
+  BlueprintPortfolioPrincipalAssociation:
+    Type: AWS::ServiceCatalog::PortfolioPrincipalAssociation
+    Properties:
+      PortfolioId: !Ref BlueprintPortfolio
+      PrincipalARN: !sub arn:aws:iam::${AWs::AccountId}:role/OrganizationAccountAccessRole
+      PrincipalType: IAM
+  S3product:
+    Type: AWS::Servicecatalog::Cloudformation
+    Properties:
+      Name: S3 product
+      Description: S3 blueprint product 
+      Distributor: Md
+      Owner: MD
+      ProvisioingArtifactParameters:
+        - Name: S3
+          Description: S3 demo
+          Info:
+            LoadTemplateFromURL: !Ref s3creation
+  S3toPortfolioProductAssociation:
+    Type: AWS::ServiceCatalog::PortfolioProductAssociation
+    Properties:
+      PortfolioId: !Ref BlueprintPortfolio
+      ProductId: !Ref S3product           
+
